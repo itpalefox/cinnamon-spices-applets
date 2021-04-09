@@ -365,12 +365,25 @@ MyApplet.prototype = {
                 let tokens = out[n].split(":");
                 switch (tokens[0].trim()) {
                     case "BCHARGE":
-                        this.batteryPercentage = tokens[1].trim(); //.trimRight("%");
+                        this.batteryPercentage = tokens[1].trim();
                         this.batteryPercentage = this.batteryPercentage.substring(0, this.batteryPercentage.length - 10)
                         break;
                     case "STATUS":
                         this.batteryState = tokens[1].trim();
                         break;
+		    case "LOADPCT":
+                        this.batteryLoad = tokens[1].trim();
+                        this.batteryLoad = this.batteryLoad.substring(0, this.batteryLoad.length - 8)
+                        break;
+                    case "LINEV":
+                        this.Line = tokens[1].trim();
+                        this.Line = this.Line.substring(0, this.Line.length - 8)
+                        break;
+		    case "BATTV":
+                        this.batteryVoltage = tokens[1].trim();
+                        this.batteryVoltage = this.batteryVoltage.substring(0, this.batteryVoltage.length - 6)
+                        break;
+
                 }
             }
             this.batteryPercentage = Math.floor(this.batteryPercentage);
@@ -450,7 +463,7 @@ If less than 4% then shutdown completely immediately.
 May be implemented in future version
 */
              // set Tooltip
-             this.set_applet_tooltip(_("Charge:") + " " + this.batteryPercentage + "% (" + this.batteryState + ")\n" + _("Alert:") + " " + Math.floor(this.alertPercentage) + "%\n"  + _("Suspend:") + " " + Math.floor(this.alertPercentage / 1.5)+ "%" );
+	     this.set_applet_tooltip(_("Charge:") + " " + this.batteryPercentage + "% (" + this.batteryState + ")\n" + _("Load:") + " " + this.batteryLoad + "%\n"  + _("Line:") + " " + this.Line + " V\n" + _("Batt V:") + " " + this.batteryVoltage + " V");
              // Now select icon to display
              if (this.batteryPercentage == 100) {
                   if (this.batteryState.indexOf("ONBATT") > -1) this.batteryIcon = this.battery100;

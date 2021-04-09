@@ -118,11 +118,15 @@ msgid "Charge:"
 msgstr ""
 
 #: applet.js:383 3.2/applet.js:468
-msgid "Alert:"
+msgid "Load:"
 msgstr ""
 
 #: applet.js:383 3.2/applet.js:468
-msgid "Suspend:"
+msgid "Line:"
+msgstr ""
+
+#: applet.js:383 3.2/applet.js:468
+msgid "Batt V:"
 msgstr ""
 
 #: applet.js:441 3.2/applet.js:516
